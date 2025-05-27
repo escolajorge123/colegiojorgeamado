@@ -1,0 +1,462 @@
+/* Reset básico e configurações globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa; /* Cor de fundo principal do corpo */
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px; /* Largura máxima do conteúdo central */
+    margin: auto; /* Centraliza o container */
+}
+
+/* Cores do Design (Variáveis CSS para fácil manutenção) */
+:root {
+    --primary-blue: #007bff;    /* Azul usado em botões e títulos de página */
+    /* --light-blue-card: #5dade2; Comentado ou removido pois não será mais usado aqui */
+    --dark-blue-text: #0A2342;  /* Azul escuro para títulos principais e textos importantes */
+    --text-color: #34495e;      /* Cor de texto padrão para parágrafos */
+    --light-gray-bg: #f0f4f8;   /* Fundo cinza claro para seções alternadas */
+    --white-bg: #FFFFFF;        /* Branco para cards e fundos de seção */
+    --accent-orange: #ffc800;   /* Laranja para detalhes e botões de destaque */
+    --icon-inovacao: #f1b80f;
+    --icon-desenvolvimento: #2ecc71;
+    --icon-comunidade: #e67e22;
+}
+
+/* Banner Principal da Escola */
+#banner-escola-container {
+    width: 100%;
+    line-height: 0; /* Remove espaço extra abaixo da imagem */
+}
+
+.banner-imagem-principal {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+/* Cabeçalho e Navegação Centralizada */
+header {
+    background-color: var(--white-bg);
+    padding: 15px 0;
+    border-bottom: 1px solid #e9ecef;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Garante que o header fique sobre outros elementos ao rolar */
+}
+
+header .container {
+    display: flex;
+    justify-content: center; /* Centraliza a navegação */
+    align-items: center;
+    padding: 0 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 5px;
+}
+
+nav ul li a {
+    color: var(--dark-blue-text);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #f8f9fa; /* Fundo leve para os links do menu */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 0.95rem;
+}
+
+nav ul li a:hover {
+    background-color: #e2e6ea; /* Cor de fundo ao passar o mouse */
+}
+
+nav ul li a.active {
+    background-color: var(--dark-blue-text); /* Cor para o link ativo (azul escuro) */
+    color: var(--white-bg); /* Texto branco para contraste */
+}
+
+/* Utilitários de Seção */
+.section-padding {
+    padding: 60px 20px; /* Adicionado padding lateral também para consistência */
+}
+.section-bg {
+    background-color: var(--light-gray-bg);
+}
+
+/* Seção Bem-vindos (index.html) */
+.bem-vindos-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Padrão uma coluna para mobile */
+    gap: 40px;
+    align-items: center;
+}
+@media (min-width: 992px) { /* Duas colunas para telas maiores */
+    .bem-vindos-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.bem-vindos-texto h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8rem;
+    color: var(--dark-blue-text);
+    margin-bottom: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+.bem-vindos-texto p {
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.bem-vindos-imagem-card {
+    background-color: transparent; /* Fundo azul removido */
+    padding: 0; /* Padding removido */
+    border-radius: 12px; /* Mantém cantos arredondados para o container */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* Mantém a sombra */
+    overflow: hidden; /* Garante que a imagem respeite o border-radius do card */
+    /* Propriedades de texto como color, font-size, font-weight, text-align foram removidas pois não há texto */
+}
+
+/* Títulos de Seção (geral) */
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--dark-blue-text);
+    margin-bottom: 50px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Cards - Estilo Base */
+.card {
+    background-color: var(--white-bg);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Para controle de altura e conteúdo interno */
+    flex-direction: column;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+.card h3, .card h4 {
+    color: var(--dark-blue-text);
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+.card p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.6;
+    flex-grow: 1; /* Para parágrafos preencherem o espaço vertical em cards de mesma altura */
+}
+
+/* Grid de Cards Informativos (index.html) */
+.informativo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+@media (min-width: 768px) {
+    .informativo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+.info-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.info-icon {
+    font-size: 1.8rem;
+    margin-right: 12px;
+    line-height: 1;
+    color: var(--primary-blue); /* Cor para os ícones informativos */
+}
+.info-card h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Grid de Pilares (index.html) */
+.pilares-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+.pilar-card {
+    text-align: center;
+}
+.pilar-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    line-height: 1;
+}
+.pilar-card .pilar-icon.icon-inovacao { color: var(--icon-inovacao); } /* Cores específicas dos ícones dos pilares */
+.pilar-card .pilar-icon.icon-desenvolvimento { color: var(--icon-desenvolvimento); }
+.pilar-card .pilar-icon.icon-comunidade { color: var(--icon-comunidade); }
+
+.pilar-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 10px 10px; /* Adicionado padding lateral */
+    background-color: #e0e6ed;
+    color: var(--text-color);
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+/* Estilos para Conteúdo de Páginas Internas (como espaco.html) */
+.page-content { /* Container principal para o conteúdo de páginas como "Nosso Espaço" */
+    background-color: var(--white-bg);
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin: 40px auto; /* Margem para centralizar e espaçar do header/footer */
+}
+.page-title { /* Título principal de páginas internas */
+    font-size: 2.2rem;
+    color: var(--dark-blue-text);
+    margin-bottom: 30px;
+    border-bottom: 3px solid var(--accent-orange);
+    padding-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+.page-content h2 { /* Subtítulos dentro de .page-content */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    color: var(--dark-blue-text);
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+.page-content p {
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+.page-content ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+.page-content ul li {
+    margin-bottom: 8px;
+}
+.page-content .section-divisor { /* Linha divisória */
+    margin: 30px 0;
+    border: 0;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Estilos para a lista de espaços na página "Nosso Espaço" (espaco.html) */
+.espaco-lista.estilo-cards {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr; /* Uma coluna por padrão */
+    gap: 25px;
+}
+@media (min-width: 768px) { /* Duas colunas para telas maiores */
+    .espaco-lista.estilo-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.espaco-item { /* Cada card de espaço */
+    /* .card base style é herdado (background, border-radius, shadow, transition, display:flex, flex-direction:column) */
+    padding: 20px; /* Padding específico para os cards de espaço */
+    text-align: center;
+}
+.espaco-item:hover { /* Efeito hover já definido no .card */ }
+
+.espaco-item h3.espaco-nome {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: var(--dark-blue-text);
+    margin-bottom: 15px;
+}
+
+.espaco-item img { /* Estilo para as imagens dentro dos cards de espaço */
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.espaco-item p.espaco-descricao {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+    /* flex-grow: 1; já herdado do .card p */
+}
+
+/* Estilos para a página de Contato (contato.html) */
+/* A seção #contato-pagina (ou ID similar) usa .section-padding e .container (já estilizados) */
+/* O .section-title dentro dela já está estilizado */
+
+.contato-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Uma coluna por padrão para mobile */
+    gap: 30px;
+    align-items: stretch; /* Faz os cards terem a mesma altura */
+}
+
+@media (min-width: 992px) { /* Duas colunas para telas maiores */
+    .contato-layout-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.info-contato.card,
+.mapa-wrapper.card {
+    /* .card base style é herdado */
+    padding: 25px; /* Padding consistente para os cards de contato e mapa */
+    /* display: flex; flex-direction: column; já herdado do .card */
+}
+
+.contato-bloco-titulo { /* Título para cada bloco: "Nossos Contatos" e "Nossa Localização" */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    color: var(--dark-blue-text);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.info-contato p.contact-detail {
+    font-size: 1.05rem;
+    color: var(--text-color);
+    margin-bottom: 18px;
+    line-height: 1.7;
+}
+
+.info-contato p.contact-detail strong {
+    color: var(--dark-blue-text);
+    font-weight: 600;
+    display: block; /* Rótulo em linha separada */
+    margin-bottom: 4px;
+}
+.info-contato p.contact-detail a {
+    color: var(--text-color); /* Garante que o link tenha a cor do texto ao redor */
+    text-decoration: none; /* Remove sublinhado padrão do link, se desejado */
+}
+.info-contato p.contact-detail a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse, para indicar que é clicável */
+    color: var(--primary-blue); /* Muda a cor ao passar o mouse para feedback */
+}
+
+
+.mapa-wrapper iframe {
+    width: 100%;
+    height: 100%; /* Ocupa toda a altura do .mapa-wrapper.card */
+    min-height: 350px; /* Altura mínima para o mapa */
+    border-radius: 8px;
+    flex-grow: 1; /* Permite que o iframe cresça para preencher o espaço */
+}
+
+/* Responsividade (ajustes gerais e para outras seções) */
+@media (max-width: 992px) { /* Telas médias como tablets (ajuste do breakpoint de .bem-vindos-grid) */
+    .bem-vindos-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .bem-vindos-imagem-card {
+        margin-top: 30px;
+        padding: 0; /* Padding removido também na versão tablet */
+    }
+    .bem-vindos-texto h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 767px) { /* Telas menores como smartphones */
+    header.container {
+        /* justify-content: center; (já está) */
+    }
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+    nav ul li {
+        margin: 5px;
+    }
+    nav ul li a {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    .section-padding {
+        padding: 40px 15px; /* Reduz padding em seções para telas pequenas */
+    }
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px; /* Menos margem inferior para títulos */
+    }
+    .pilares-grid, .informativo-grid, .espaco-lista.estilo-cards, .contato-layout-grid {
+        grid-template-columns: 1fr; /* Uma coluna para todos os grids */
+    }
+    .page-title {
+        font-size: 1.8rem;
+    }
+    .page-content {
+        padding: 20px;
+        margin: 20px auto; /* Menos margem vertical para .page-content */
+    }
+
+    .bem-vindos-texto h2 {
+        font-size: 2rem;
+    }
+    .bem-vindos-imagem-card {
+        padding: 0; /* Padding removido também na versão mobile */
+        /* font-size: 1.3rem; removido pois não há texto */
+    }
+
+    .info-contato.card, .mapa-wrapper.card {
+        padding: 20px; /* Menos padding nos cards de contato/mapa */
+        margin-bottom: 20px;
+    }
+    .mapa-wrapper.card:last-child {
+        margin-bottom: 0;
+    }
+    .info-contato p.contact-detail {
+        font-size: 1rem;
+    }
+    .contato-bloco-titulo {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+}
+
+/* Estilo para a imagem da fachada no card "Bem-vindos" */
+.fachada-escola-imagem {
+    max-width: 100%; /* Garante que a imagem não ultrapasse a largura do conteúdo do card */
+    width: 100%; /* Faz a imagem ocupar toda a largura do card pai (agora sem padding) */
+    height: auto;    /* Mantém a proporção da imagem */
+    /* border-radius: 8px;  A imagem em si não precisa mais de border-radius se o pai tem overflow:hidden */
+    display: block;  /* Permite o uso de margin: auto para centralização e comportamento adequado */
+    margin: 0 auto;  /* Centraliza a imagem horizontalmente (embora com width 100% não terá efeito visível) */
+}
